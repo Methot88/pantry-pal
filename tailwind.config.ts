@@ -52,6 +52,14 @@ export default {
           elevated: "hsl(var(--surface-elevated))",
         },
         "primary-glow": "hsl(var(--primary-glow))",
+        water: {
+          top: "hsl(var(--water-top))",
+          bottom: "hsl(var(--water-bottom))",
+        },
+        bowl: {
+          DEFAULT: "hsl(var(--bowl))",
+          rim: "hsl(var(--bowl-rim))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
