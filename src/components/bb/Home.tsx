@@ -120,11 +120,16 @@ export function Home() {
           {state.weather ? "" : " (estimate)"}
         </div>
 
-        {/* Big visual */}
-        <div className="relative">
-          <BowlVisual fillFraction={fill} petEmoji={emojiFor(activePet.type)} size={260} />
-          {/* Status ring */}
-          <svg className="absolute inset-0 m-auto" width="280" height="280" viewBox="0 0 100 100" style={{ transform: "rotate(-90deg)" }} aria-hidden="true">
+        {/* Big visual — square frame so ring + bowl share the same center */}
+        <div className="relative grid place-items-center" style={{ width: 300, height: 300 }}>
+          <svg
+            className="absolute inset-0"
+            width="300"
+            height="300"
+            viewBox="0 0 100 100"
+            style={{ transform: "rotate(-90deg)" }}
+            aria-hidden="true"
+          >
             <circle cx="50" cy="50" r="46" fill="none" stroke="hsl(var(--border))" strokeWidth="2" />
             <circle
               cx="50" cy="50" r="46" fill="none"
@@ -136,6 +141,7 @@ export function Home() {
               style={{ transition: "stroke-dashoffset 0.8s var(--ease-spring), stroke 0.4s" }}
             />
           </svg>
+          <BowlVisual fillFraction={fill} petEmoji={emojiFor(activePet.type)} size={230} />
         </div>
 
         {/* Stats */}
