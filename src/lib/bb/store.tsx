@@ -58,6 +58,17 @@ export function BBProvider({ children }: { children: ReactNode }) {
     try { localStorage.setItem(KEY, JSON.stringify(state)); } catch {}
   }, [state]);
 
+  // Apply appearance settings to <html>
+  useEffect(() => {
+    const root = document.documentElement;
+    const { darkMode, highContrast, largeText } = state.settings;
+    const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
+    const isDark = darkMode === "dark" || (darkMode === "auto" && prefersDark);
+    root.classList.toggle("dark", isDark);
+    root.classList.toggle("hc", highContrast);
+    root.classList.toggle("big-text", largeText);
+  }, [state.settings]);
+
   const activePet = state.pets.find((p) => p.id === state.activePetId) ?? state.pets[0] ?? null;
 
   const addPet: Ctx["addPet"] = useCallback((pet) => {
