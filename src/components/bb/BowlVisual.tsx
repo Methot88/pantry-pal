@@ -3,10 +3,9 @@ import { useEffect, useState } from "react";
 interface Props {
   fillFraction: number; // 0..1
   size?: number;
-  petEmoji?: string;
 }
 
-export function BowlVisual({ fillFraction, size = 240, petEmoji = "🐾" }: Props) {
+export function BowlVisual({ fillFraction, size = 240 }: Props) {
   const f = Math.max(0, Math.min(1, fillFraction));
   const [animated, setAnimated] = useState(0);
   useEffect(() => {
@@ -95,9 +94,6 @@ export function BowlVisual({ fillFraction, size = 240, petEmoji = "🐾" }: Prop
             stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeLinecap="round"
           />
         )}
-
-        {/* Pet emoji peeking in front of bowl */}
-        <text x="100" y="178" textAnchor="middle" fontSize="22">{petEmoji}</text>
       </svg>
     </div>
   );
