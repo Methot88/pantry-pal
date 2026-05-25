@@ -96,6 +96,170 @@
     --border: 200 30% 70%;
   }
   .big-text { font-size: 110%; }
+
+  /* ===== Battery-friendly themes (all dark, low-luminance) ===== */
+
+  /* True black OLED — saves the most battery on OLED screens */
+  .theme-oled {
+    --background: 0 0% 0%;
+    --foreground: 200 15% 88%;
+    --card: 0 0% 4%;
+    --card-foreground: 200 15% 88%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 200 15% 88%;
+    --primary: 200 80% 55%;
+    --primary-foreground: 0 0% 0%;
+    --primary-glow: 195 80% 60%;
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 200 15% 88%;
+    --muted: 0 0% 7%;
+    --muted-foreground: 200 10% 60%;
+    --accent: 14 75% 52%;
+    --accent-foreground: 0 0% 0%;
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 200 80% 55%;
+    --surface: 0 0% 0%;
+    --surface-elevated: 0 0% 5%;
+    --bowl: 0 0% 14%;
+    --bowl-rim: 0 0% 22%;
+    --gradient-sky: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 2%) 100%);
+  }
+
+  /* Deep midnight blue */
+  .theme-midnight {
+    --background: 222 45% 6%;
+    --foreground: 210 25% 86%;
+    --card: 222 40% 9%;
+    --card-foreground: 210 25% 86%;
+    --popover: 222 40% 9%;
+    --popover-foreground: 210 25% 86%;
+    --primary: 210 75% 55%;
+    --primary-foreground: 222 45% 6%;
+    --primary-glow: 210 80% 62%;
+    --secondary: 222 30% 14%;
+    --secondary-foreground: 210 25% 86%;
+    --muted: 222 30% 12%;
+    --muted-foreground: 210 15% 62%;
+    --accent: 18 70% 52%;
+    --accent-foreground: 222 45% 6%;
+    --border: 222 25% 18%;
+    --input: 222 25% 18%;
+    --ring: 210 75% 55%;
+    --surface: 222 45% 7%;
+    --surface-elevated: 222 40% 11%;
+    --bowl: 222 25% 22%;
+    --bowl-rim: 222 22% 32%;
+    --gradient-sky: linear-gradient(180deg, hsl(222 45% 7%) 0%, hsl(222 50% 4%) 100%);
+  }
+
+  /* Forest night — muted greens */
+  .theme-forest {
+    --background: 150 25% 6%;
+    --foreground: 90 15% 85%;
+    --card: 150 22% 9%;
+    --card-foreground: 90 15% 85%;
+    --popover: 150 22% 9%;
+    --popover-foreground: 90 15% 85%;
+    --primary: 145 50% 45%;
+    --primary-foreground: 150 25% 6%;
+    --primary-glow: 145 55% 55%;
+    --secondary: 150 18% 13%;
+    --secondary-foreground: 90 15% 85%;
+    --muted: 150 18% 11%;
+    --muted-foreground: 90 10% 60%;
+    --accent: 38 70% 50%;
+    --accent-foreground: 150 25% 6%;
+    --border: 150 15% 18%;
+    --input: 150 15% 18%;
+    --ring: 145 50% 45%;
+    --surface: 150 25% 7%;
+    --surface-elevated: 150 22% 11%;
+    --bowl: 150 15% 22%;
+    --bowl-rim: 150 12% 32%;
+    --gradient-sky: linear-gradient(180deg, hsl(150 25% 8%) 0%, hsl(150 30% 5%) 100%);
+  }
+
+  /* Dusk plum — warm dim purple */
+  .theme-plum {
+    --background: 285 28% 7%;
+    --foreground: 285 12% 86%;
+    --card: 285 25% 10%;
+    --card-foreground: 285 12% 86%;
+    --popover: 285 25% 10%;
+    --popover-foreground: 285 12% 86%;
+    --primary: 285 50% 60%;
+    --primary-foreground: 285 28% 7%;
+    --primary-glow: 290 55% 68%;
+    --secondary: 285 20% 14%;
+    --secondary-foreground: 285 12% 86%;
+    --muted: 285 20% 12%;
+    --muted-foreground: 285 8% 62%;
+    --accent: 340 65% 55%;
+    --accent-foreground: 285 28% 7%;
+    --border: 285 18% 18%;
+    --input: 285 18% 18%;
+    --ring: 285 50% 60%;
+    --surface: 285 28% 8%;
+    --surface-elevated: 285 25% 12%;
+    --bowl: 285 18% 22%;
+    --bowl-rim: 285 15% 32%;
+    --gradient-sky: linear-gradient(180deg, hsl(285 28% 8%) 0%, hsl(285 32% 5%) 100%);
+  }
+
+  /* Espresso — warm dark brown */
+  .theme-espresso {
+    --background: 25 20% 6%;
+    --foreground: 35 18% 86%;
+    --card: 25 18% 10%;
+    --card-foreground: 35 18% 86%;
+    --popover: 25 18% 10%;
+    --popover-foreground: 35 18% 86%;
+    --primary: 30 65% 52%;
+    --primary-foreground: 25 20% 6%;
+    --primary-glow: 35 70% 58%;
+    --secondary: 25 15% 14%;
+    --secondary-foreground: 35 18% 86%;
+    --muted: 25 15% 12%;
+    --muted-foreground: 35 10% 62%;
+    --accent: 12 70% 52%;
+    --accent-foreground: 25 20% 6%;
+    --border: 25 12% 18%;
+    --input: 25 12% 18%;
+    --ring: 30 65% 52%;
+    --surface: 25 20% 7%;
+    --surface-elevated: 25 18% 11%;
+    --bowl: 25 12% 22%;
+    --bowl-rim: 25 10% 32%;
+    --gradient-sky: linear-gradient(180deg, hsl(25 20% 8%) 0%, hsl(25 24% 5%) 100%);
+  }
+
+  /* Graphite slate — neutral dim gray */
+  .theme-slate {
+    --background: 215 12% 9%;
+    --foreground: 210 12% 86%;
+    --card: 215 12% 12%;
+    --card-foreground: 210 12% 86%;
+    --popover: 215 12% 12%;
+    --popover-foreground: 210 12% 86%;
+    --primary: 200 60% 55%;
+    --primary-foreground: 215 12% 9%;
+    --primary-glow: 200 65% 62%;
+    --secondary: 215 10% 16%;
+    --secondary-foreground: 210 12% 86%;
+    --muted: 215 10% 14%;
+    --muted-foreground: 210 8% 62%;
+    --accent: 14 65% 52%;
+    --accent-foreground: 215 12% 9%;
+    --border: 215 8% 20%;
+    --input: 215 8% 20%;
+    --ring: 200 60% 55%;
+    --surface: 215 12% 10%;
+    --surface-elevated: 215 12% 13%;
+    --bowl: 215 8% 24%;
+    --bowl-rim: 215 6% 34%;
+    --gradient-sky: linear-gradient(180deg, hsl(215 12% 10%) 0%, hsl(215 14% 7%) 100%);
+  }
 }
 
 @layer base {

@@ -12,6 +12,7 @@ const defaultSettings: Settings = {
   darkMode: "auto",
   largeText: false,
   highContrast: false,
+  theme: "default",
 };
 
 const initial: AppState = {
@@ -61,12 +62,19 @@ export function BBProvider({ children }: { children: ReactNode }) {
   // Apply appearance settings to <html>
   useEffect(() => {
     const root = document.documentElement;
-    const { darkMode, highContrast, largeText } = state.settings;
+    const { darkMode, highContrast, largeText, theme } = state.settings;
     const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
-    const isDark = darkMode === "dark" || (darkMode === "auto" && prefersDark);
+    // Battery-friendly themes always imply dark.
+    const themeForcesDark = theme && theme !== "default";
+    const isDark = themeForcesDark || darkMode === "dark" || (darkMode === "auto" && prefersDark);
     root.classList.toggle("dark", isDark);
     root.classList.toggle("hc", highContrast);
     root.classList.toggle("big-text", largeText);
+    // Remove any previous theme-* class then add the active one
+    Array.from(root.classList)
+      .filter((c) => c.startsWith("theme-"))
+      .forEach((c) => root.classList.remove(c));
+    if (theme && theme !== "default") root.classList.add(`theme-${theme}`);
   }, [state.settings]);
 
   const activePet = state.pets.find((p) => p.id === state.activePetId) ?? state.pets[0] ?? null;

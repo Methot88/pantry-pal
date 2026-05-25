@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ChevronLeft, Trash2 } from "lucide-react";
 import { useBB } from "@/lib/bb/store";
-import type { AlertTone, Sensitivity } from "@/lib/bb/types";
+import type { AlertTone, Sensitivity, Theme } from "@/lib/bb/types";
 import { playTone, requestNotificationPermission } from "@/lib/bb/notifications";
 import { toast } from "sonner";
 
@@ -17,6 +17,16 @@ const SENS: { v: Sensitivity; label: string; sub: string }[] = [
   { v: "low", label: "Low", sub: "Mild climate" },
   { v: "medium", label: "Medium", sub: "Default" },
   { v: "high", label: "High", sub: "Hot or dry homes" },
+];
+
+const THEMES: { v: Theme; label: string; sub: string; swatch: string[] }[] = [
+  { v: "default",  label: "Default",  sub: "Sky & water",        swatch: ["#bfe6ff", "#1e9bf0", "#ff7a4d"] },
+  { v: "oled",     label: "True Black", sub: "Best for OLED battery", swatch: ["#000000", "#0a0a0a", "#1f8fd1"] },
+  { v: "midnight", label: "Midnight", sub: "Deep blue",          swatch: ["#0b1428", "#16243f", "#3d8bd6"] },
+  { v: "forest",   label: "Forest",   sub: "Calm green",         swatch: ["#0d1a14", "#16271f", "#3aa56b"] },
+  { v: "plum",     label: "Plum",     sub: "Warm dusk",          swatch: ["#170f1c", "#251a2c", "#9b5cc4"] },
+  { v: "espresso", label: "Espresso", sub: "Warm brown",         swatch: ["#150f0a", "#241a12", "#c98438"] },
+  { v: "slate",    label: "Slate",    sub: "Neutral graphite",   swatch: ["#15181c", "#1f242a", "#4ea3d1"] },
 ];
 
 export function SettingsPage() {
@@ -120,6 +130,7 @@ export function SettingsPage() {
 
         <section className="bg-card rounded-3xl p-5 shadow-soft border border-border space-y-3">
           <h2 className="font-display text-xl font-bold">Appearance</h2>
+          <div className="text-sm font-semibold">Mode</div>
           <div className="grid grid-cols-3 gap-2">
             {(["auto", "light", "dark"] as const).map((m) => (
               <button key={m} onClick={() => updateSettings({ darkMode: m })}
@@ -128,6 +139,34 @@ export function SettingsPage() {
               </button>
             ))}
           </div>
+
+          <div>
+            <div className="text-sm font-semibold mb-1">Theme</div>
+            <div className="text-xs text-muted-foreground mb-2">
+              All themes (except Default) are low-light to save battery — great for OLED.
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              {THEMES.map(({ v, label, sub, swatch }) => (
+                <button
+                  key={v}
+                  onClick={() => updateSettings({ theme: v })}
+                  className={`p-3 rounded-2xl border-2 text-left flex items-center gap-3 tap-44 ${s.theme === v ? "border-primary bg-primary/10" : "border-border"}`}
+                  aria-pressed={s.theme === v}
+                >
+                  <div className="flex -space-x-1.5 shrink-0">
+                    {swatch.map((c, i) => (
+                      <span key={i} className="h-6 w-6 rounded-full border border-border" style={{ background: c }} />
+                    ))}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="font-bold leading-tight truncate">{label}</div>
+                    <div className="text-xs text-muted-foreground truncate">{sub}</div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
           <Toggle label="Large text" sub="Bigger labels for easier reading" value={s.largeText} onChange={(v) => updateSettings({ largeText: v })} />
           <Toggle label="High contrast" sub="Stronger borders and colors" value={s.highContrast} onChange={(v) => updateSettings({ highContrast: v })} />
         </section>
