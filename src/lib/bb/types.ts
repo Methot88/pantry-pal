@@ -31,6 +31,7 @@ export interface HistoryEntry {
 
 export type Sensitivity = "low" | "medium" | "high";
 export type AlertTone = "drop" | "bell" | "bark" | "meow" | "chime";
+export type Theme = "default" | "oled" | "midnight" | "forest" | "plum" | "espresso" | "slate";
 
 export interface Settings {
   sensitivity: Sensitivity;
@@ -41,6 +42,7 @@ export interface Settings {
   darkMode: "auto" | "light" | "dark";
   largeText: boolean;
   highContrast: boolean;
+  theme: Theme;
 }
 
 export interface AppState {
