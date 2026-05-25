@@ -10,7 +10,10 @@ import { PetSwitcher } from "./PetSwitcher";
 import { BowlVisual } from "./BowlVisual";
 import type { PetType } from "@/lib/bb/types";
 
-const emojiFor = (t: PetType) => (t === "dog" ? "🐶" : t === "cat" ? "🐱" : "🐾");
+const emojiFor = (t: PetType, mood: "happy" | "sad") => {
+  if (mood === "sad") return t === "dog" ? "🥺" : t === "cat" ? "😿" : "😟";
+  return t === "dog" ? "🐶" : t === "cat" ? "🐱" : "🐾";
+};
 
 export function Home() {
   const { state, activePet, refillActive, setWeather } = useBB();
@@ -94,6 +97,8 @@ export function Home() {
 
   const fill = prediction.fillFraction;
   const ringColor = fill > 0.5 ? "hsl(var(--primary))" : fill > 0.18 ? "hsl(38 95% 55%)" : "hsl(var(--destructive))";
+  const mood: "happy" | "sad" = fill < 0.18 ? "sad" : "happy";
+  const petFace = emojiFor(activePet.type, mood);
 
   return (
     <div className="min-h-screen bg-gradient-sky">
@@ -122,6 +127,15 @@ export function Home() {
 
         {/* Big visual — square frame so ring + bowl share the same center */}
         <div className="relative grid place-items-center" style={{ width: 300, height: 300 }}>
+          {/* Pet face peeking from top-right of the bowl */}
+          <div
+            className="absolute z-10 grid place-items-center rounded-full bg-card border-2 border-border shadow-elev animate-bob"
+            style={{ top: 4, right: 4, width: 72, height: 72, fontSize: 44, lineHeight: 1 }}
+            aria-label={`${activePet.name} is ${mood}`}
+            title={mood === "sad" ? "Bowl is low — please refill!" : "Happy and hydrated"}
+          >
+            <span>{petFace}</span>
+          </div>
           <svg
             className="absolute inset-0"
             width="300"
@@ -141,7 +155,7 @@ export function Home() {
               style={{ transition: "stroke-dashoffset 0.8s var(--ease-spring), stroke 0.4s" }}
             />
           </svg>
-          <BowlVisual fillFraction={fill} petEmoji={emojiFor(activePet.type)} size={230} />
+          <BowlVisual fillFraction={fill} size={230} />
         </div>
 
         {/* Stats */}
@@ -170,7 +184,7 @@ export function Home() {
           >
             <Droplets className="h-10 w-10" />
             I just refilled the bowl
-            <span className="text-base font-bold opacity-90">{emojiFor(activePet.type)} 💧</span>
+            <span className="text-base font-bold opacity-90">{petFace} 💧</span>
           </button>
         </div>
 
